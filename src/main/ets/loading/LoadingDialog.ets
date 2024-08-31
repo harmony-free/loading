@@ -68,7 +68,7 @@ function loadingCustom(param: LoadingParamFace) {
         }.fontSize(40)
         .padding(5).fontColor(0xFF444444)
       }
-      Text(param.msg).fontSize(14).fontColor(0xFF444444)
+      Text(param.msg ?? "加载中...").fontSize(14).fontColor(0xFF444444)
     }.backgroundColor(Color.White).padding(20).borderRadius(10)
   }.backgroundColor(0x30000000).justifyContent(FlexAlign.Center).height('100%').width('100%')
 }

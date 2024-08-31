@@ -32,7 +32,7 @@ import { LoadingDialog, LoadingParam, LoadingState } from '@loading/dialog';
 
 ```
 LoadingDialog.show()
-LoadingDialog.show({state:LoadingState.loading} as LoadingParam)
+LoadingDialog.show({state:LoadingState.loading})
 ```
 
 3.3 隐藏弹窗
