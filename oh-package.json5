@@ -1,8 +1,12 @@
 {
   "name": "@free/loading",
-  "version": "1.0.0",
-  "description": "这是一个加载的弹窗",
-  "keywords": ["tools","loading","progress"],
+  "version": "1.0.1",
+  "description": "这是一个加载框，可以在任意页面使用这个弹窗，可以通过调整传入的参数改变加载的状态。",
+  "keywords": [
+    "tools",
+    "loading",
+    "progress"
+  ],
   "main": "Index.ets",
   "author": {
     "name": "余邦锦",
