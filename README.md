@@ -20,25 +20,25 @@ ohpm install @free/loading
 
 ```
 /**
-* LoadingDialog 加载框
+* Loading 加载框
 * args: LoadingParam 弹窗展示参数 -- 非必填
 * state：LoadingState (loading:加载、success:成功、failure:失败、info:信息、warn:警告、progress:下载进度)
   */
   
-import { LoadingDialog, LoadingParam, LoadingState } from '@free/loading';
+import { Loading, LoadingParam, LoadingState } from '@free/loading';
 ```
 
 3.2 展示弹窗
 
 ```
-LoadingDialog.show()
-LoadingDialog.show({state:LoadingState.loading})
+Loading.show()
+Loading.show({state:LoadingState.loading})
 ```
 
 3.3 隐藏弹窗
 
 ```
-LoadingDialog.hide()
+Loading.hide()
 ```
 
 #### 参与贡献

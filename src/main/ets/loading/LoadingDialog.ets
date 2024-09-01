@@ -1,4 +1,4 @@
-import { ComponentContent, OverlayManager, UIContext, window } from '@kit.ArkUI'
+import { OverlayUtils } from './OverlayUtils'
 import { LoadingParam, LoadingParamFace, LoadingState } from './Params'
 
 /**
@@ -8,48 +8,31 @@ import { LoadingParam, LoadingParamFace, LoadingState } from './Params'
  */
 
 
-export class LoadingDialog {
-  static overlayUtils: OverlayUtils
-
-  static fullScreen(fullScreen: boolean, windowStage?: window.WindowStage) {
-    if (windowStage != null) {
-      windowStage.getMainWindowSync().setWindowLayoutFullScreen(fullScreen)
-    } else {
-      window.getLastWindow(getContext()).then((w) => {
-        w.setWindowLayoutFullScreen(fullScreen)
-      })
-    }
+export class LoadingDialog extends OverlayUtils<LoadingParamFace> {
+  protected init(): void {
+    let component = this.create(wrapBuilder(loadingCustom), new LoadingParam())
+    this.push("loading", component)
+    this.hide()
   }
 
-  static getOverlay() {
-    if (LoadingDialog.overlayUtils == null) {
-      // LoadingDialog.fullScreen(true)
-      LoadingDialog.overlayUtils = new OverlayUtils()
-    }
-    return LoadingDialog.overlayUtils
+  builder<T extends object>(builder: WrappedBuilder<[T]>, args: T) {
+    this.remove()
+    let component = this.create(builder, args)
+    this.push("loading", component)
   }
 
 
-  static show(args?: LoadingParamFace) {
-    LoadingDialog.getOverlay().update(args)
-  }
-
-  static hide() {
-    LoadingDialog.getOverlay().hide()
-  }
-
-  static showTime(args?: LoadingParamFace, delay: number = 1000): Promise<boolean> {
-    LoadingDialog.show(args)
+  showAsync(args?: LoadingParamFace, delay: number = 10000): Promise<boolean> {
+    this.show(args)
     return new Promise<boolean>((res, rej) => {
       let num = setTimeout(() => {
-        LoadingDialog.hide()
+        this.hide()
         clearTimeout(num)
         res(true)
       }, delay)
     })
   }
 }
-
 
 @Builder
 function loadingCustom(param: LoadingParamFace) {
@@ -73,51 +56,4 @@ function loadingCustom(param: LoadingParamFace) {
   }.backgroundColor(0x30000000).justifyContent(FlexAlign.Center).height('100%').width('100%')
 }
 
-export class OverlayUtils {
-  uiContext: UIContext = new UIContext()
-  overlay: OverlayManager = this.uiContext.getOverlayManager()
-  component: ComponentContent<LoadingParamFace> =
-    new ComponentContent(this.getUIContext(), wrapBuilder(loadingCustom), new LoadingParam())
-
-  constructor() {
-    this.init()
-  }
-
-  getUIContext(): UIContext {
-    return this.uiContext
-  }
-
-  getOverlay(): OverlayManager {
-    return this.overlay
-  }
-
-  init() {
-    this.getOverlay().addComponentContent(this.component)
-    this.hide()
-  }
-
-  remove() {
-    this.getOverlay().removeComponentContent(this.component)
-  }
-
-  update(args: LoadingParamFace = new LoadingParam()) {
-    this.component.update(args)
-    this.show()
-  }
-
-  show() {
-    this.getOverlay().showComponentContent(this.component)
-  }
-
-  showAll() {
-    this.getOverlay().showAllComponentContents()
-  }
-
-  hide() {
-    this.getOverlay().hideComponentContent(this.component)
-  }
-
-  hideAll() {
-    this.getOverlay().hideAllComponentContents()
-  }
-}
+export const Loading = new LoadingDialog()

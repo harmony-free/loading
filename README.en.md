@@ -17,10 +17,10 @@ ohpm install @free/loading
 #### Instructions
 
 ```
-import { LoadingDialog, LoadingParam, LoadingState } from '@free/loading';
+import { Loading, LoadingParam, LoadingState } from '@free/loading';
 
-LoadingDialog.show()
-LoadingDialog.hide()
+Loading.show()
+Loading.hide()
 
 ```
 
