@@ -25,7 +25,7 @@ ohpm install @free/loading
 * state：LoadingState (loading:加载、success:成功、failure:失败、info:信息、warn:警告、progress:下载进度)
   */
   
-import { LoadingDialog, LoadingParam, LoadingState } from '@loading/dialog';
+import { LoadingDialog, LoadingParam, LoadingState } from '@free/loading';
 ```
 
 3.2 展示弹窗
