@@ -1,3 +1,9 @@
+### 1.0.3 新增Dialog loading加载框
+
+1、导入@free/dialog插件
+
+2、添加弹窗 loading版本
+
 ### 1.0.2 修复 api 12 UIContext 闪退 相关bug
 
 通过异步或者传入主 window 获取UIContext

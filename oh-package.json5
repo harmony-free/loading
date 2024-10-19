@@ -16,5 +16,7 @@
   "repository": "https://gitee.com/harmony-free/loading",
   "license": "MIT",
   "modelVersion": "5.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "@free/dialog": "^1.0.3"
+  }
 }
