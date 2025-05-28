@@ -3,6 +3,7 @@
 #### 介绍
 
 这是轻量级一个加载框，可以在任意页面使用这个弹窗，可以通过调整传入的参数改变加载的状态。
+dialog 版本 loading [@free/dialog](https://ohpm.openharmony.cn/#/cn/detail/@free%2Fdialog)
 
 #### 软件架构
 
@@ -42,8 +43,6 @@ Loading.hide()
 ```
 
 #### 参与贡献
-
-dialog 版本 loading [@free/dialog](https://ohpm.openharmony.cn/#/cn/detail/@free%2Fdialog)
 
 1. Fork 本仓库
 2. 新建 Feat_xxx 分支

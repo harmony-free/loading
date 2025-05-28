@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "library",
+    "name": "loading",
     "type": "har",
     "deviceTypes": [
       "default",
