@@ -1,6 +1,6 @@
 # loading
 
-#### 介绍
+#### 介绍 [English](README.en.md)
 
 这是轻量级一个加载框，可以在任意页面使用这个弹窗，可以通过调整传入的参数改变加载的状态。
 dialog 版本 loading [@free/dialog](https://ohpm.openharmony.cn/#/cn/detail/@free%2Fdialog)
