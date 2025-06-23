@@ -31,7 +31,7 @@ import { Loading, LoadingParam, LoadingState } from '@free/loading';
 
 ```
 Loading.show()
-Loading.show({state:LoadingState.loading})
+Loading.show({msg:"loading...",state:LoadingState.loading})
 ```
 
 3 Hidden pop-up window

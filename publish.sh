@@ -1,2 +1,2 @@
 
-ohpm publish ./build/default/outputs/default/library.har
+ohpm publish ./build/default/outputs/default/loading.har

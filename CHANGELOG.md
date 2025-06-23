@@ -1,12 +1,11 @@
-### 1.0.4 更新优化
-
-1、修改包名
-
+[English](CHANGELOG.en.md)
 ### 1.0.3 新增Dialog loading加载框
 
 1、导入@free/dialog插件
 
 2、添加弹窗 loading版本
+
+3、修改包名
 
 ### 1.0.2 修复 api 12 UIContext 闪退 相关bug
 
@@ -18,7 +17,7 @@
 
 LoadingDialog.show({state:LoadingState.loading} as LoadingParam)
 
-==> 讲不用转化传参类型
+==> 将不用转化传参类型
 
 LoadingDialog.show({state:LoadingState.loading})
 

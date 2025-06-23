@@ -33,7 +33,7 @@ import { Loading, LoadingParam, LoadingState } from '@free/loading';
 
 ```
 Loading.show()
-Loading.show({state:LoadingState.loading})
+Loading.show({msg:"加载中",state:LoadingState.loading})
 ```
 
 3.3 隐藏弹窗

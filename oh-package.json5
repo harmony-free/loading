@@ -17,6 +17,6 @@
   "license": "MIT",
   "modelVersion": "5.0.0",
   "dependencies": {
-    "@free/dialog": "^1.0.3"
+    "@free/dialog": "^1.0.4"
   }
 }
