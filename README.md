@@ -42,6 +42,109 @@ Loading.show({msg:"加载中",state:LoadingState.loading})
 Loading.hide()
 ```
 
+#### 插件明细
+
+hello 各位同学，大家好！ 今天我们来讲讲关于鸿蒙里常用的loading加载框功能，是基于Overlay覆盖物层面开发的。在开发的过程在，loading加载框基本随处可见，只要是涉及到异步有延迟的操作都需要展示，以免导致页面无反应，用户体验差的感觉。
+
+一、了解Overlay，Overlay是在getUIContext上的一层覆盖物。
+
+```arkts
+let context = getContext() as common.UIAbilityContext
+let overlay = context.windowStage.getMainWindowSync().getUIContext().getOverlayManager()
+```
+
+二、添加、删除、显示、隐藏覆盖组件
+
+
+```arkts
+// 添加覆盖组件
+overlay.addComponentContent(content)
+// 删除覆盖物组件
+overlay.removeComponentContent(content)
+// 显示覆盖物组件
+overlay.showComponentContent(content)
+// 隐藏覆盖物组件
+overlay.hideComponentContent(content)
+```
+
+三、创建组件、更新数据
+
+```arkts
+// 创建组件
+let content = new ComponentContent(this.getUIContext(), builder, args)
+// 更新数据
+content.update(args)
+
+```
+
+四、自定义builder组件，六种状态loading、success、failure、info、warn、progress。
+
+
+```arkts
+
+export enum LoadingState {
+  loading = 'sys.symbol.loading',
+  success = 'sys.symbol.checkmark',
+  failure = 'sys.symbol.xmark',
+  info = 'sys.symbol.info_circle',
+  warn = 'sys.symbol.exclamationmark_circle',
+  progress = 'sys.symbol.progress'
+}
+
+export interface LoadingParamFace {
+  state?: LoadingState
+  msg: string
+  progress?: number
+  progressColor?: number | string
+  total?: number
+  data?: object
+}
+
+@Builder
+function loadingCustom(param: LoadingParamFace) {
+  Column() {
+    Column() {
+      if (param.state ?? LoadingState.loading == LoadingState.loading) {
+        LoadingProgress().width(50).height(50).color(0xFF444444)
+      } else if (param.state == LoadingState.progress) {
+        Progress({ value: param.progress, total: param.total, type: ProgressType.Ring })
+          .width(50)
+          .padding(5)
+          .style({ strokeWidth: 3, enableScanEffect: true })
+      } else {
+        Text() {
+          SymbolSpan($r(param.state))
+        }.fontSize(40)
+        .padding(5).fontColor(0xFF444444)
+      }
+      Text(param.msg ?? "加载中...").fontSize(14).fontColor(0xFF444444)
+    }.backgroundColor(Color.White).padding(20).borderRadius(10)
+  }.backgroundColor(0x30000000).justifyContent(FlexAlign.Center).height('100%').width('100%')
+}
+```
+
+注意：完整代码我已提交到鸿蒙三方库中，使用一下命令安装
+
+
+```
+ohpm install @free/loading
+```
+
+
+调用方式
+
+```arkts
+// 显示loading加载框
+Loading.show({state:LoadingState.loading})
+// 隐藏loading加载框
+Loading.hide()
+```
+
+喜欢本篇内容的话给个小爱心！
+
+
+
+
 #### 参与贡献
 
 1. Fork 本仓库

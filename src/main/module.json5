@@ -1,12 +1,13 @@
 {
-  "module": {
-    "name": "loading",
-    "type": "har",
-    "deviceTypes": [
-      "default",
-      "tablet",
-      "2in1",
-      "car"
-    ]
-  }
+	"module": {
+		"name": "loading",
+		"type": "har",
+		"deviceTypes": [
+			"default",
+			"tablet",
+			"2in1",
+			"car"
+		],
+		"routerMap": "$profile:route_map"
+	}
 }
